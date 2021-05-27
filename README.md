@@ -102,6 +102,7 @@ https://github.com/maheshkvemuri/maheshkvemuri/tree/main/Diagrams/ELK_Container_
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
+
    10.0.0.7
    
    10.0.0.8
@@ -128,12 +129,20 @@ playbook is a file where ansible code is written. playbook is written in YAML. Y
 
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 host file is updated with machine ip-address to make the Ansible run the playbook on a specific machine. ipaddress is added in the hosts file under different sections as [webservers] and [elk] to specify the type of vm's.   
-By specifying the type of vm's the playbook to install in 'hosts' section of playbook. In the install-elk.yml playbook, hosts: elk  specifiy the playbook to intstall elk on elk server and in filebeat-playbook.yml, hosts:webservers  specify the playbook to install filebeat on webservers that are listed in hosts file.  
+By specifying the type of vm's the playbook to install in 'hosts' section of playbook. In the install-elk.yml playbook, 'hosts: elk' specifiy the playbook to intstall elk on elk server and in filebeat-playbook.yml, 'hosts:webservers' specify the playbook to install filebeat on webservers that are listed in hosts file.  
 
 - _Which URL do you navigate to in order to check that the ELK server is running?_
+
 http://[ELK-Server-VM-public-ip]:5601/app/kibana
+
 http://20.37.38.19:5601/app/kibana
  
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
+root@e52defb05812:~# ansible-playbook install-elk.yml
 
+root@e52defb05812:~# ansible-playbook install-elk.yml
+
+root@e52defb05812:~# ansible-playbook filebeat-playbook.yml
+
+root@e52defb05812:~# ansible-playbook metricbeat-playbook.yml
