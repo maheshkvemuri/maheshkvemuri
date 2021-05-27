@@ -135,6 +135,7 @@ http://[ELK-Server-VM-public-ip]:5601/app/kibana
 
 http://20.37.38.19:5601/app/kibana
 
+Below image shows the Kibana homepage 
 https://github.com/maheshkvemuri/maheshkvemuri/tree/main/Diagrams/Kibana_Homepage.PNG
 
  
