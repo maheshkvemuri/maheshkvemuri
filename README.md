@@ -134,6 +134,9 @@ By specifying the type of vm's the playbook to install in 'hosts' section of pla
 http://[ELK-Server-VM-public-ip]:5601/app/kibana
 
 http://20.37.38.19:5601/app/kibana
+
+https://github.com/maheshkvemuri/maheshkvemuri/tree/main/Diagrams/Kibana_Homepage.PNG
+
  
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
