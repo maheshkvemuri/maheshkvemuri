@@ -5,7 +5,7 @@ The files in this repository were used to configure the network depicted below.
 https://github.com/maheshkvemuri/maheshkvemuri/tree/main/Diagrams/ELK_Server.png
 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
 
  pentest.yml : to install DVWA containers in web servers 
  
@@ -19,9 +19,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
  
  metricbeat-playbook.yml : metricbeat config file
 
-
-
-This document contains the following details:
+### This document contains the following details:
 - Description of the Topology
 - Access Policies
 - ELK Configuration
@@ -51,7 +49,6 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - Metricbeat is a lightweight shipper that you can install on your servers to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name      | Function         | IP Address | Operating System |
 |-----------|------------------|------------|------------------|
@@ -72,11 +69,10 @@ whitelisted IP addresses
 123.243.76.253
 
 Machines within the network can only be accessed by Jump Box.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+
 ELK VM is accessed by Jump Box and the IP addresss is 13.73.112.60/10.0.0.4 
 
 A summary of the access policies in place can be found in the table below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name       | Publicly Accessible | Allowed IP Addresses |
 |------------|---------------------|----------------------|
@@ -106,19 +102,18 @@ https://github.com/maheshkvemuri/maheshkvemuri/tree/main/Diagrams/ELK_Container_
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- List the IP addresses of the machines you are monitoring_
    10.0.0.7
+   
    10.0.0.8
+   
    10.0.0.10
 
 We have installed the following Beats on these machines:
-- Specify which Beats you successfully installed_
-filebeat
-metricbeat
+- filebeat
+- metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
-
+In each machine Filebeat monitors the log files or locations and collects log events, while metricbeats collect metrics and statistics
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -128,17 +123,17 @@ SSH into the control node and follow the steps below:
 - Update the hosts file to include webservers and elk
 - Run the playbook, and navigate to VM's to check that the installation worked as expected.
 
-
-_TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
+playbook is a file where ansible code is written. playbook is written in YAML. YAML stands for Yet Another Markup Language. playbook is copied to Ansible control node.
 
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+host file is updated with machine ip-address to make the Ansible run the playbook on a specific machine. ipaddress is added in the hosts file under different sections as [webservers] and [elk] to specify the type of vm's.   
+By specifying the type of vm's the playbook to install in 'hosts' section of playbook. In the install-elk.yml playbook, hosts: elk  specifiy the playbook to intstall elk on elk server and in filebeat-playbook.yml, hosts:webservers  specify the playbook to install filebeat on webservers that are listed in hosts file.  
 
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-
-
-
-
-
+- _Which URL do you navigate to in order to check that the ELK server is running?_
+http://[ELK-Server-VM-public-ip]:5601/app/kibana
+http://20.37.38.19:5601/app/kibana
+ 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+
